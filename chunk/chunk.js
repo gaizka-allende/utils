@@ -17,17 +17,17 @@ export default function chunk(array, numberOfChuncks) {
   const remainder = array.length % numberOfChuncks;
 
   let chunks = [];
-  for(let i = 0; i < quotient; i += 1) {
-    if (i < quotient-1) {
-      if (i === 0) {
-        chunks.push(array.slice(i, i + quotient));
-      } else {
-      chunks.push(array.slice(i * quotient, i*quotient + quotient));
-      }
+  let chunk;
+  let index = 0;
+  for(let i = 1; i <= numberOfChuncks; i += 1) {
+    if (i < numberOfChuncks) {
+      chunk = array.slice(index, index + quotient);
     } else {
-      chunks.push(array.slice(i * quotient, i*quotient + quotient + remainder));
+      chunk = array.slice(index, index + quotient + remainder);
     }
 
+    chunks.push(chunk);
+    index += quotient;
   }
 
     return chunks;

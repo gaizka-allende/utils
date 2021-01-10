@@ -43,3 +43,12 @@ test("splits into two, one of two and another of three", () => {
   ]);
 });
 
+test("splits into two, one of two and another of three", () => {
+  expect(chunk(["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q"], 3)).toEqual([
+    ["a", "b", "c", "d", "e"],
+    ["f", "g", "h", "i", "j"],
+    ["k", "l", "m", "n", "o", "p", "q"],
+  ]);
+});
+
+
