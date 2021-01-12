@@ -7,10 +7,18 @@ export default function differenceBy(inspect, exclude, iteratee) {
     return inspect;
   }
 
-  if (typeof iteratee !== "function") {
+  if (typeof iteratee !== "function" && typeof iteratee !== "string") {
     return inspect;
   }
 
-  const mappedExclude = exclude.map((item) => iteratee(item));
-  return inspect.filter((item) => !mappedExclude.includes(iteratee(item)));
+  if (typeof iteratee === "function") {
+    const mappedExclude = exclude.map((item) => iteratee(item));
+    return inspect.filter((item) => !mappedExclude.includes(iteratee(item)));
+  }
+
+  if (typeof iteratee === "string") {
+    return inspect.filter((item) => {
+      return item[iteratee] !== exclude[0][iteratee];
+    });
+  }
 }
