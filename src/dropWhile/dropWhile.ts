@@ -1,14 +1,13 @@
 export default function dropWhile(array: any[], iteratee: any): any[] {
   const entries = Object.entries(iteratee);
   return array.filter((item) => {
-    let keep = false;
-    for (const [key, value] of entries) {
+    return entries.reduce<boolean>((acc, curr) => {
+      const [key, value] = curr;
       if (item[key] === value) {
-        keep = keep || false;
+        return acc || false;
       } else {
-        keep = true;
+        return true;
       }
-    }
-    return keep;
+    }, false);
   });
 }

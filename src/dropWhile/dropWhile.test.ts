@@ -8,7 +8,10 @@ const users = [
 
 describe("dropWhile", () => {
   test("drop items using iteratee with just one property", () => {
-    expect(dropWhile(users, { active: false })).toEqual([{ user: "pebbles", location: "London", active: true }]);
+    expect(dropWhile(users, { location: "New York" })).toEqual([
+      { user: "barney", location: "London", active: false },
+      { user: "pebbles", location: "London", active: true },
+    ]);
   });
   test("drop items using iteratee with more than one property", () => {
     expect(dropWhile(users, { active: false, location: "London" })).toEqual([
