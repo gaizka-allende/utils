@@ -5,7 +5,8 @@ function objectCallback(iteratee: any, element: any): boolean {
     return acc && element[name] === value;
   }, true);
 }
-function propertyCallback(propertyName: string, element: string) {
+function propertyCallback(propertyName: any, element: string) {
+  // @ts-ignore
   if (element[propertyName]) {
     return true;
   }
