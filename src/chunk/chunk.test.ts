@@ -9,7 +9,7 @@ test("does not split it with one", () => {
 });
 
 test("does not split the array if exceeds number of items", () => {
-  expect(chunk(["a", "b", "c", "d"], 5)).toEqual(["a", "b", "c", "d"]);
+expect(chunk(["a", "b", "c", "d"], 5)).toEqual(["a", "b", "c", "d"]);
 });
 
 test("splits into two of two", () => {

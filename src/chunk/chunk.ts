@@ -8,17 +8,13 @@ export default function chunk(array: any[], numberOfChuncks: number): any[] {
   const quotient = Math.floor(array.length / numberOfChuncks);
   const remainder = array.length % numberOfChuncks;
 
-  let chunks: any[] = [];
-  let index = 0;
-  for (let i = 1; i <= numberOfChuncks; i += 1) {
-    if (i < numberOfChuncks) {
-      chunks = [...chunks, array.slice(index, index + quotient)];
+  return Array(numberOfChuncks).fill([]).reduce<any[]>((acc, curr, index) => {
+    if (index === 0) {
+      return [...acc, array.slice(index, index + quotient)]; 
+    } else if (index > 0 && index < numberOfChuncks - 1){
+      return [...acc, array.slice(index * quotient, index * quotient + quotient);
     } else {
-      chunks = [...chunks, array.slice(index, index + quotient + remainder)];
+      return [...acc, array.slice(index * quotient, index * quotient + quotient + remainder);
     }
-
-    index += quotient;
-  }
-
-  return chunks;
+  }, []);
 }
