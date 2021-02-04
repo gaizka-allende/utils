@@ -12,9 +12,9 @@ export default function chunk(array: any[], numberOfChuncks: number): any[] {
     if (index === 0) {
       return [...acc, array.slice(index, index + quotient)]; 
     } else if (index > 0 && index < numberOfChuncks - 1){
-      return [...acc, array.slice(index * quotient, index * quotient + quotient);
+      return [...acc, array.slice(index * quotient, index * quotient + quotient)];
     } else {
-      return [...acc, array.slice(index * quotient, index * quotient + quotient + remainder);
+      return [...acc, array.slice(index * quotient, index * quotient + quotient + remainder)];
     }
   }, []);
 }
