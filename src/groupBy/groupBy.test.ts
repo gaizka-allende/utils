@@ -15,3 +15,7 @@ it("groups by property", () => {
     "New York": [{ user: "fred", location: "New York" }],
   });
 });
+
+it("groups by return of iteratee", () => {
+  expect(groupBy([6.1, 4.2, 6.3], Math.floor)).toEqual({ '4': [4.2], '6': [6.1, 6.3] });
+});

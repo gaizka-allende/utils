@@ -1,14 +1,21 @@
 export default function groupBy(array: any[], iteratee: any) {
+  
   return array.reduce((acc, curr) => {
-    if (acc[curr[iteratee]] === undefined) {
+    let property;
+    if (typeof iteratee === 'function') {
+      property = iteratee(curr);
+    } else {
+      property = curr[iteratee];
+    }
+    if (acc[property] === undefined) {
       return {
         ...acc,
-        [curr[iteratee]]: [curr],
+        [property]: [curr],
       };
     } else {
       return {
         ...acc,
-        [curr[iteratee]]: [...acc[curr[iteratee]], curr],
+        [property]: [...acc[property], curr],
       };
     }
   }, {});
